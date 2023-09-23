@@ -2,7 +2,7 @@
 
 ## Semantic Versioning :mage:
 
-This project is going utilize semantic versioning for its tagging.
+This project is going to utilize semantic versioning for its tagging.
 [semver.org](https://semver.org/)
 
 The general format:
@@ -10,20 +10,20 @@ The general format:
  **MAJOR.MINOR.PATCH**, eg. `1.0.1`
 
 - **MAJOR** version when you make incompatible API changes
-- **MINOR** version when you add functionality in a backward compatible manner
+- **MINOR** version when you add functionality in a backward-compatible manner
 - **PATCH** version when you make backward compatible bug fixes
 
 ## Install the Terraform CLI
 
 ### Considerations with the Terraform CLI changes
-The Terraform CLI installation instructiions have changed due to gpg keyring changes. So we needed refer to the latest install CLI instructions via TerraformDocumentation and change the scripting for install. 
+The Terraform CLI installation instructions have changed due to gpg keyring changes. So we needed to refer to the latest install CLI instructions via TerraformDocumentation and change the scripting for installation. 
 
 [Install Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 
 ### Considerations for Linux Distribution 
 
 This project is built against Ubuntu. 
-Please consider checking your Linux Distirbution and change accordingly to distribution needs. 
+Please consider checking your Linux distribution and changing it accordingly to distribution needs. 
 
 [How To Check OS Version in Linux](https://www.cyberciti.biz/faq/how-to-check-os-version-in-linux-command-line/)
 
@@ -46,13 +46,13 @@ UBUNTU_CODENAME=jammy
 ```
 ### Refactoring into Bash Scripts
 
-While fixing the Terraform CLI gpg deprciation issues we notice that bash scripts steps were a considerable amount more code. So we decided to create a bash script to install the Terraform CLI.
+While fixing the Terraform CLI gpg depreciation issues we noticed that bash scripts steps were a considerable amount more code. So we decided to create a bash script to install the Terraform CLI.
 
 This bash scripts is located here: [./bin/install_terraform_cli](./bin/install_terraform_cli)
 
 - This will keep the Gitpod Task File ([.gitpod.yml](.gitpod.yml)) tidy.
-- This allow us an easier to debug and execute manually Terraform CLI install
-- This will allow better portablity for other projects that need to install Terraform CLI.
+- This allows us an easier to debug and execute manually Terraform CLI install
+- This will allow better portability for other projects that need to install Terraform CLI.
 
 
 #### Shebang Considerations
@@ -61,17 +61,17 @@ A Shebang (pronounced She-bang) tells the bash script what program that will int
 
 ChatGPT recommended this format for bash: `#!/usr/bin/env bash`
 
-- for portability for different os distributions
-- will serarch the user's PATH for the bash executable
+- for portability for different OS distributions
+- will search the user's PATH for the bash executable
 
 https://en.wikipedia.org/wiki/Shebang_(Unix)
 
 #### Execution Considerations 
-When execiting the bash screipt we can use the  `./` shorthand notation to execute the bash script. 
+When executing the bash script we can use the  `./` shorthand notation to execute the bash script. 
 
 eg. `./bin/instal_terraform_cli`
 
-If we are using a scrip in .gitpod.yml, we need to point the script to a program to interpret it.
+If we are using a script in .gitpod.yml, we need to point the script to a program to interpret it.
 
 eg. `source ./bin/install_terraform_cli`
 
@@ -100,17 +100,17 @@ https://www.gitpod.io/docs/configure/workspaces/tasks
 
 ### Working Env Vars
 
-We can list out all Evnironment Variables (Env Vars) using the `env`
+We can list out all Environment Variables (Env Vars) using the `env`
 
 We can filter specific env vars using grep eg. `env | grep AWS_`
 
 #### Setting and Unsetting Env Vars
 
-In the terminal we can set using export `export HELLO=world`
+In the terminal, we can set using export `export HELLO=world`
 
-In the terrminal we can unset using `unset HELLO`
+In the terminal, we can unset using `unset HELLO`
 
-We can set an env var temporarly whe just running a command
+We can set an env var temporarily when we running a command
 
 ```sh
 HELLO=`world` ./bin/print_message
@@ -124,7 +124,7 @@ HELLO=`world`
 echo $HELLO
 ```
 
-## Priniting Vars
+## Printing Vars
 
 We can print an env var using echo eg. `echo $HELLO`
 
@@ -140,11 +140,11 @@ We can persist env vars into gitpod by storing them in Gitpod Secrets Storage.
 
 ```
 
-All future workspaces launced will set the env vars for all bas terminals opened in thoes workspaces.
+All future workspaces launched will set the env vars for all bas terminals opened in those workspaces.
 
-You can also set env vars in the `.gitpod.yml` but this can only contain non-sensetive env vars.
+You can also set env vars in the `.gitpod.yml` but this can only contain non-sensitive env vars.
 
-### AWS CLI is installlation
+### AWS CLI is an installation
 
 AWS CLI is installed for the project via the bash script [`./bin/install_aws_cli'](.bin/install_aws_cli)
 
@@ -153,13 +153,13 @@ AWS CLI is installed for the project via the bash script [`./bin/install_aws_cli
 [AWS CLI Env Vars](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
 
 
-We cam check if our AWS credentials is configured correctly by running the following AWS CLI command:
+We can check if our AWS credentials are configured correctly by running the following AWS CLI command:
 
 ```sh
 aws sts get-caller-identity
 ```
 
-If is is succesfull you should see a json payload return that looks like this:
+If it is successful you should see a JSON payload return that looks like this:
 
 ```json
 {       "UserId": "BIJA8LBVC6NWKCJESQ7F4",
@@ -168,4 +168,4 @@ If is is succesfull you should see a json payload return that looks like this:
 }
 ```
 
-We'll need to generate AWS CLI credits from IAM user in ourder to the user AWS CLI.
+We'll need to generate AWS CLI credits from IAM user in order to the user AWS CLI.
