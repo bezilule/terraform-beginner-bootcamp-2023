@@ -204,6 +204,12 @@ We can output this changeset ie. "plan" to be passed to an apply, but often you 
 This will run a plan and pass the changeset to be excute by terraform. Apply should prompt yes or no.
 
 If we want to automatically approve an apply we can provide the auto approve flag eg. `terraform apply --auto-approve`
+#### Terraform Destroy
+
+`terraform destroy`
+
+You can also use the auto approve flag to skip the approve prompt
+eg. `terrraform apply --auto-approve`
 
 #### Terrafrom Lock Files
 
