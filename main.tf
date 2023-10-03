@@ -1,14 +1,23 @@
+terraform {
+  #backend "remote" {
+  #  hostname = "app.terraform.io"
+  #  organization = "Enat-Terraform-Bootcamp"
 
-#https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#bucket
+  #  workspaces {
+  #    name = "terra-house-1"
+  #  }
+  #}
+  #cloud {
+  #  organization = "Enat-Terraform-Bootcamp"
+  #  workspaces {
+  #    name = "terra-house-1"
+  #  }
+  #}
 
- resource "aws_s3_bucket" "website_bucket" {
-  #Bucket Naming Rules
-  #https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html
+}
 
-  bucket = var.bucket_name
-
-    tags = {
-    UserUuid = var.user_uuid
-  }
- }
-
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
+}
