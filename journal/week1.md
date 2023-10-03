@@ -1,5 +1,28 @@
 # Terraform Beginner Bootcamp 2023 - Week 1
 
+## Fixing Tags
+
+[How to Delete Local and Remote Tags on Git](https://devconnected.com/how-to-delete-local-and-remote-tags-on-git/)
+
+Locally delete a tag
+
+```
+git tag -d <tag_name>
+
+```
+
+eg: git tag -d 1.1.0
+
+Remotely delete a tag
+
+```
+git push --delete orgin tagname
+
+```
+
+eg: git push --delete orgin 1.1.0
+
+
 ## Root Module Structure
 
 Our root module structure is as follows:
@@ -151,3 +174,42 @@ resource "aws_s3_object" "index_html" {
   key    = "index.html"
   source = "${path.root}/public/index.html"
 }
+## Terraform Locals
+
+Locall allows us to define local variables.
+It can be very useful when we need transform data into another format and have referenced a variable.
+
+
+```tf
+locals {
+  s3_origin_id = "MyS3Origin"
+}
+```
+
+[Local Values](https://developer.hashicorp.com/terraform/language/values/locals)
+
+### Terraform Data Sources
+
+This allows use to source data from cloud resources.
+
+This is useful when we want to reference cloud resources without importing them.
+
+```tf 
+data "aws_caller_identity" "current" {}
+
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+```
+
+[Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
+
+## Working with JSON
+
+We use the jsonencode to create the json policy inline in the hcl.
+
+```
+> jsonencode({"hello"="world"})
+{"hello":"world"}
+```
+[jsonencode](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
