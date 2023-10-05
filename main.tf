@@ -13,7 +13,6 @@ terraform {
   #    name = "terra-house-1"
   #  }
   #}
-
 }
 
 module "terrahouse_aws" {
@@ -23,4 +22,5 @@ module "terrahouse_aws" {
   index_html_filepath = var.index_html_filepath
   error_html_filepath = var.error_html_filepath
   content_version = var.content_version
+  assets_path = var.assets_path
 }
