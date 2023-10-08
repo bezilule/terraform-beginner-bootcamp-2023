@@ -15,7 +15,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
 )
-
 // func main(): Defines the main function, the entry point of the app. 
 // When you run the program, it starts executing from this function.
 func main() {
@@ -184,7 +183,6 @@ func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interfac
 	d.SetId(homeUUID)
 
 	log.Print("resourceHouseCreate:end")
-
 	return diags
 }
 
@@ -292,6 +290,7 @@ func resourceHouseUpdate(ctx context.Context, d *schema.ResourceData, m interfac
 	d.Set("name",payload["name"])
 	d.Set("description",payload["description"])
 	d.Set("content_version",payload["content_version"])
+
 	return diags
 }
 
