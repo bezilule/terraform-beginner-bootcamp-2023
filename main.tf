@@ -14,12 +14,12 @@ terraform {
   #    name = "terra-house-1"
   #  }
   #}
-  #cloud {
-  #  organization = "Enat-Terraform-Bootcamp"
-  #  workspaces {
-  #    name = "terra-house-1"
-  #  }
-  #}
+  cloud {
+    organization = "Enat-Terraform-Bootcamp"
+    workspaces {
+      name = "terra-house-1"
+    }
+  }
 }
 
 provider "terratowns" {
@@ -28,26 +28,41 @@ provider "terratowns" {
   token = var.terratowns_access_token
 }
 
-module "terrahouse_aws" {
-  source = "./modules/terrahouse_aws"
+module "home_fall_hosting" {
+  source = "./modules/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
-  bucket_name = var.bucket_name
-  index_html_filepath = var.index_html_filepath
- error_html_filepath = var.error_html_filepath
- content_version = var.content_version
-  assets_path = var.assets_path
+  public_path = var.fall.public_path
+  content_version = var.fall.content_version
 }
 
-resource "terratowns_home" "home" {
-  name = "Fall Season!"
+resource "terratowns_home" "home_fall" {
+  name = "Fall Seasone!"
   description = <<DESCRIPTION
-Fall, or autumn, is a transition from summer to winter marked by shorter days and cooler temperatures. 
-The season displays vibrant leaf colors due to pigment changes. It brings a cooler atmosphere, fallen leaves, 
-and a shift to warmer clothing. Harvests like pumpkins and apples peak, and cultural celebrations like Thanksgiving occur. 
-The fleeting nature of the season also encourages reflection on life's transience, making fall a time to appreciate changing beauty.
+Fall, or autumn, is a transition from summer to winter marked by shorter days and cooler temperatures.
+The season displays vibrant leaf colors due to pigment changes. It brings a cooler atmosphere, 
+fallen leaves, and a shift to warmer clothing. Harvests like pumpkins and apples peak, and cultural 
+celebrations like Thanksgiving occur. The fleeting nature of the season also encourages reflection on 
+life's transience, making fall a time to appreciate changing beauty.
 DESCRIPTION
-  domain_name = module.terrahouse_aws.cloudfront_url
-  #domain_name = "3fdq3gz.cloudfront.net"
-  town = "the-nomad-pad"
-  content_version = 1
+  domain_name = module.home_fall_hosting.domain_name
+  town = "missingo"
+  content_version = var.fall.content_version
+}
+
+
+module "home_doro-wot_hosting" {
+  source = "./modules/terrahome_aws"
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.doro-wot.public_path
+  content_version = var.doro-wot.content_version
+}
+
+resource "terratowns_home" "home_doro-wot" {
+  name = "Making Ethiopia Dish Doro Wot"
+  description = <<DESCRIPTION
+Doro Wot, is a traditional Ethiopian dish that can be best described as a rich and spicy chicken stew. It's one of the most beloved dishes in Ethiopian cuisine and often reserved for special occasions, but it's also enjoyed on regular days.
+DESCRIPTION
+  domain_name = module.home_doro-wot_hosting.domain_name
+  town = "missingo"
+  content_version = var.doro-wot.content_version
 }
