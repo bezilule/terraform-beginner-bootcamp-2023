@@ -58,11 +58,11 @@ module "home_doro-wot_hosting" {
 }
 
 resource "terratowns_home" "home_doro-wot" {
-  name = "Making Ethiopia Dish Doro Wot"
+  name = "Ethiopia Dish Doro Wot"
   description = <<DESCRIPTION
 Doro Wot, is a traditional Ethiopian dish that can be best described as a rich and spicy chicken stew. It's one of the most beloved dishes in Ethiopian cuisine and often reserved for special occasions, but it's also enjoyed on regular days.
 DESCRIPTION
   domain_name = module.home_doro-wot_hosting.domain_name
-  town = "the-nomad-pad"
+  town = "cooker-cove"
   content_version = var.doro-wot.content_version
 }
