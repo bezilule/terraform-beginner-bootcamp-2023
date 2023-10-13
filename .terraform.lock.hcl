@@ -5,9 +5,9 @@ provider "local.providers/local/terratowns" {
   version     = "1.0.0"
   constraints = "1.0.0"
   hashes = [
-    "h1:M1cNs2GBq3ImavCNM/FL/qw4OMUJsfxyIiFh6HM1RWI=",
-]
-}
+    "h1:hsqiV7tlcn3hLJIKtdZjfszKrnR6qPjb0zaOynnmYy8=",
+  ]
+  
 
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "5.17.0"
@@ -15,4 +15,5 @@ provider "registry.terraform.io/hashicorp/aws" {
   hashes = [
     "h1:U+EDfeUqefebA1h7KyBMD1xH0h311LMi7wijPDPkC/0="
     ]
+}
 }
