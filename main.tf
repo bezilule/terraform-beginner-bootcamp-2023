@@ -45,7 +45,7 @@ celebrations like Thanksgiving occur. The fleeting nature of the season also enc
 life's transience, making fall a time to appreciate changing beauty.
 DESCRIPTION
   domain_name = module.home_fall_hosting.domain_name
-  town = "missingo"
+  town = "the-nomad-pad"
   content_version = var.fall.content_version
 }
 
@@ -63,6 +63,6 @@ resource "terratowns_home" "home_doro-wot" {
 Doro Wot, is a traditional Ethiopian dish that can be best described as a rich and spicy chicken stew. It's one of the most beloved dishes in Ethiopian cuisine and often reserved for special occasions, but it's also enjoyed on regular days.
 DESCRIPTION
   domain_name = module.home_doro-wot_hosting.domain_name
-  town = "missingo"
+  town = "the-nomad-pad"
   content_version = var.doro-wot.content_version
 }
