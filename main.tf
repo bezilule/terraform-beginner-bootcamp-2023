@@ -67,4 +67,6 @@ DESCRIPTION
   domain_name = module.home_doro-wot_hosting.domain_name
   town = "cooker-cove"
   content_version = var.doro-wot.content_version
+
+ 
 }
